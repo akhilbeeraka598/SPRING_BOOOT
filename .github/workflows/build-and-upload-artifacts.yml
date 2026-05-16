@@ -47,13 +47,13 @@ jobs:
     - name: Install Frontend Dependencies
       run: |
         cd frontend
-        npm install --legacy-peer-deps --no-audit --no-fund
-        npm list vite
+        npm ci --legacy-peer-deps
     
     - name: Build Frontend
       run: |
         cd frontend
-        npx vite build
+        chmod +x node_modules/.bin/*
+        npx tsc && npx vite build
     
     - name: Upload Frontend Artifact
       uses: actions/upload-artifact@v4
